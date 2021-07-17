@@ -1,0 +1,10 @@
+<mvc:View
+    controllerName="numen.talentos.roteiro.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
+    <Shell id="shell">
+        <App id="app" class="myApp001" />
+    </Shell>
+</mvc:View>

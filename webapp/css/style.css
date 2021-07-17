@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+
+.myApp001 .myCustomText{
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 1%;
+}

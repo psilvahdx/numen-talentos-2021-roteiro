@@ -1,0 +1,141 @@
+{
+  "_version": "1.32.0",
+  "sap.app": {
+    "id": "numen.talentos.roteiro",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "ach": "ach",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZTLNT2021_GW_001_SRV/",
+        "type": "OData",
+        "settings": {         
+          "odataVersion": "2.0",
+          "localUri": "localService/metadata.xml"
+        }
+      }
+		}
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://task",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "flexEnabled": false,
+    "rootView": {
+      "viewName": "numen.talentos.roteiro.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.66.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "numen.talentos.roteiro.i18n.i18n"
+        }
+      },
+	"": {
+			"dataSource": "mainService",
+            "preload": true,
+            "settings": {
+                "defaultOperationMode": "Server",              
+                "defaultBindingMode": "TwoWay",
+                "useBatch": true,
+                "defaultUpdateMethod": "PUT"
+            }
+        },
+    "companyModel":{
+          "type": "sap.ui.model.json.JSONModel",
+          "uri": "/model/company.json"
+      },
+      "editCompanyModel":{
+          "type": "sap.ui.model.json.JSONModel",
+          "uri": "/model/editCompany.json"
+      }
+
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "numen.talentos.roteiro.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false,
+        "bypassed": {
+               "target": "notFound"
+            }
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": "",
+          "target": ["TargetView1"]
+        },
+        {
+          "name": "RouteCompanyDetail",
+          "pattern": "companies/{Carrid}",
+          "target": "TargetCompanyDetail"
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View1",
+          "viewName": "View1"
+        },
+         "TargetCompanyDetail": {          
+          "viewId": "companyDetail",
+          "viewName": "CompanyDetail"
+        },
+        "notFound": {
+               "viewId": "notFound",
+               "viewName": "NotFound",
+               "transition": "show"
+            }
+      }
+    }
+  }
+}

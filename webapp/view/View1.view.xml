@@ -1,0 +1,67 @@
+<mvc:View
+    controllerName="numen.talentos.roteiro.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+>
+	
+				<Page id="page" title="{i18n>title}">
+					<content>                      
+                        <Input visible="false" id="companyInput" />
+                        <Text visible="false" text="{companyModel>/ScarrSet/Carrname}" class="myCustomText" /> 
+                        
+                        <SearchField width="50%" search=".onFilterCompanies"/>
+
+
+                          <List
+                            id="companyList"
+                            items="{/ScarrSet}">
+
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="{i18n>companyList_header_txt}" level="H2" />
+                                    <ToolbarSpacer />                                    
+                                    <Button
+                                        icon="sap-icon://create"
+                                        text="Novo"
+                                        press=".onBtnCreatePress" />                                  
+                                </OverflowToolbar>
+                            </headerToolbar>
+
+                            <ObjectListItem
+                                title="{Carrname}"
+                                type="Active"
+                                press=".onListItemPressed">
+                                <ObjectAttribute text="{Url}" />
+                                <ObjectAttribute text="{Currcode}" />
+                            </ObjectListItem>
+                        </List>
+						
+
+                         <!--<List
+                            id="companyList"
+                            items="{path:'/SpfliSet', sorter: {path:'Carrid', descending: true}}"
+                            headerText="{i18n>companyList_header_txt}">                            
+                            <ObjectListItem
+                                title="{Cityfrom} {i18n>to_txt} {Cityto}"
+                                type="Active"
+                                press=".onListItemPressed"
+                                icon="{
+                                        path: 'Fltime',
+                                        formatter: '.formatter.statusFlTime'
+                                      }">
+                                <firstStatus>
+                                    <ObjectStatus
+                                        text="{Fltime}"                                        
+                                        state="{= ${Fltime} > 300 ? 'Error' : 'Success'}" />
+                                </firstStatus>
+                                <ObjectAttribute text="{Connid}" />
+                                <ObjectAttribute text="{Carrid}" />
+                            </ObjectListItem>
+                        </List>-->
+                      
+                    </content>
+				</Page>
+			
+</mvc:View>
